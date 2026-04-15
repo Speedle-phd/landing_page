@@ -274,6 +274,7 @@ header{
    align-items: center;
    width: var(--_width);
    gap: 2rem;
+   text-align: center;
 }
 main {
    display: flex;
