@@ -11,7 +11,7 @@ jobs:
       steps:
          - name: Archive app
            run: |
-               tar -czf app.tar.gz
+               tar -czf app.tar.gz .
 
          - name: Remove /var/www/html contents
            uses: appleboy/ssh-action@v1.0.3
