@@ -1,2 +1,2 @@
-console.log("object23");
+console.log("object123");
 export {};
