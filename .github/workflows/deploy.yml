@@ -31,6 +31,6 @@ jobs:
               key: ${{ secrets.SSH_PRIVATE_KEY }}
               script: |
                  cd /var/www/html
-                 tar -xzf --overwrite app.tar.gz
+                 tar -xzf app.tar.gz --overwrite 
                  rm app.tar.gz
                  tsc
