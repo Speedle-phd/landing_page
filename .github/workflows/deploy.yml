@@ -14,7 +14,7 @@ jobs:
                rsync -avz --delete \
                --exclude='.git' \
                --exclude='.well-known' \
-               ./ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/var/www/html
+               ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html
 
          - name: Build on server
            uses: appleboy/ssh-action@v1.0.3
