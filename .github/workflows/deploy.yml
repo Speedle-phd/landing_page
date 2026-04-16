@@ -9,14 +9,12 @@ jobs:
    build-and-deploy:
       runs-on: ubuntu-latest
       steps:
-         - name: Deploy with rsync
+         - name: Archive app
            run: |
-               rsync -avz --delete \
-               --exclude='.git' \
-               --exclude='.well-known' \
-               ./ ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html
+               rsync -a --exclude='.github' . temp_dir
+               tar -czf app.tar.gz -C temp_dir .
 
-         - name: Build on server
+         - name: Remove /var/www/html contents
            uses: appleboy/ssh-action@v1.0.3
            with:
               host: ${{ secrets.SSH_HOST }}
@@ -24,4 +22,25 @@ jobs:
               key: ${{ secrets.SSH_PRIVATE_KEY }}
               script: |
                   cd /var/www/html
+                  rm -rf ./*
+                  
+         - name: Copy to server
+           uses: appleboy/scp-action@v0.1.7
+           with:
+              host: ${{ secrets.SSH_HOST }}
+              username: ${{ secrets.SSH_USERNAME }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              source: "app.tar.gz"
+              target: "/var/www/html"
+      
+         - name: Deploy to GitHub Pages
+           uses: appleboy/ssh-action@v1.0.3
+           with:
+              host: ${{ secrets.SSH_HOST }}
+              username: ${{ secrets.SSH_USERNAME }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              script: |
+                  cd /var/www/html
+                  tar -xzf app.tar.gz
+                  rm app.tar.gz
                   tsc
