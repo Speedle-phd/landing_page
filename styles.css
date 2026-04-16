@@ -261,7 +261,7 @@ body {
    align-items: center;
    flex-direction: column;
    min-height: calc(100dvh - 4rem);
-   overflow-x: hidden;
+   overflow: hidden;
    margin-inline: auto;
    gap: 2rem;
    
@@ -295,6 +295,22 @@ a {
       font-size: 1.7rem;
    }
 }
+.cursor-dot{
+   --_radius: 100px;
+   position: absolute;
+   top:0;
+   left:0;
+   width: calc(var(--_radius) * 2);
+   height: calc(var(--_radius) * 2);
+   border-radius: 50%;
+   background-color: var(--clr-blue);
+   pointer-events: none;
+   transform: translate(-50%, -50%);
+   z-index: 1000;
+   filter: blur(20px);
+   opacity: 0.4;
+}
+
 
 @layer components{
    .underline{
