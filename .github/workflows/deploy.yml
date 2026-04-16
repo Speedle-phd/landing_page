@@ -22,4 +22,4 @@ jobs:
           rsync -avz --delete \
             -e "ssh -i ~/.ssh/id_ecdsa -p ${{ secrets.SSH_PORT }}" \
             dist/ \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/
+            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/
