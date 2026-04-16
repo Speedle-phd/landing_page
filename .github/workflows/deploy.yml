@@ -9,21 +9,23 @@ jobs:
    build-and-deploy:
       runs-on: ubuntu-latest
       steps:
-      - name: Setup SSH key
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ecdsa
-          chmod 600 ~/.ssh/id_ecdsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+         - name: echo "Building and Deploying"
+           run: echo "Building and Deploying"
+      # - name: Setup SSH key
+      #   run: |
+      #     mkdir -p ~/.ssh
+      #     chmod 700 ~/.ssh
+      #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ecdsa
+      #     chmod 600 ~/.ssh/id_ecdsa
+      #     ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Install rsync
-        run: sudo apt-get update && sudo apt-get install -y rsync
+      # - name: Install rsync
+      #   run: sudo apt-get update && sudo apt-get install -y rsync
 
-      - name: Deploy via rsync
-        run: |
-            rsync -avz --delete \
-            --exclude='.git/' \
-            --exclude='.well-known/' \
-            -e "ssh -i ~/.ssh/id_ecdsa -p ${{ secrets.SSH_PORT }}" \
-            ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/
+      # - name: Deploy via rsync
+      #   run: |
+      #       rsync -avz --delete \
+      #       --exclude='.git/' \
+      #       --exclude='.well-known/' \
+      #       -e "ssh -i ~/.ssh/id_ecdsa -p ${{ secrets.SSH_PORT }}" \
+      #       ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/var/www/html/
