@@ -11,7 +11,8 @@ jobs:
       steps:
          - name: Archive app
            run: |
-               tar --exclude='.github' -czf app.tar.gz .
+               rsync -a --exclude='.github' . temp_dir
+               tar -czf app.tar.gz -C temp_dir .
 
          - name: Copy to server
            uses: appleboy/scp-action@v0.1.7
