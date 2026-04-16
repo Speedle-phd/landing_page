@@ -12,9 +12,9 @@ jobs:
          - name: Deploy to GitHub Pages
            uses: appleboy/ssh-action@v1.0.3
            with:
+              host: ${{ secrets.SSH_HOST }}
               username: ${{ secrets.SSH_USERNAME }}
               key: ${{ secrets.SSH_PRIVATE_KEY }}
-              port: ${{ secrets.SSH_PORT }}
               script: |
                  cd /var/www/html
                  git pull origin main
