@@ -9,37 +9,17 @@ jobs:
    build-and-deploy:
       runs-on: ubuntu-latest
       steps:
-         - name: Archive app
-           run: |
-               tar -czf app.tar.gz .
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ecdsa
+          chmod 600 ~/.ssh/id_ecdsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-         - name: Remove /var/www/html contents
-           uses: appleboy/ssh-action@v1.0.3
-           with:
-              host: ${{ secrets.SSH_HOST }}
-              username: ${{ secrets.SSH_USERNAME }}
-              key: ${{ secrets.SSH_PRIVATE_KEY }}
-              script: |
-                  cd /var/www/html
-                  rm -rf /var/www/html/*
-                  
-         - name: Copy to server
-           uses: appleboy/scp-action@v0.1.7
-           with:
-              host: ${{ secrets.SSH_HOST }}
-              username: ${{ secrets.SSH_USERNAME }}
-              key: ${{ secrets.SSH_PRIVATE_KEY }}
-              source: "app.tar.gz"
-              target: "/var/www/html"
-      
-         # - name: Deploy to GitHub Pages
-         #   uses: appleboy/ssh-action@v1.0.3
-         #   with:
-         #      host: ${{ secrets.SSH_HOST }}
-         #      username: ${{ secrets.SSH_USERNAME }}
-         #      key: ${{ secrets.SSH_PRIVATE_KEY }}
-         #      script: |
-         #          cd /var/www/html
-         #          tar -xzf app.tar.gz
-         #          # rm app.tar.gz
-         #          # tsc
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ecdsa -p ${{ secrets.SSH_PORT }}" \
+            dist/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/html/
