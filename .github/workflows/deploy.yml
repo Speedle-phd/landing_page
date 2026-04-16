@@ -9,6 +9,19 @@ jobs:
    build-and-deploy:
       runs-on: ubuntu-latest
       steps:
+         - name: Archive app
+           run: |
+               tar -czf app.tar.gz . --exclude=.github
+
+         - name: Copy to server
+           uses: appleboy/scp-action@v0.1.7
+           with:
+              host: ${{ secrets.SSH_HOST }}
+              username: ${{ secrets.SSH_USERNAME }}
+              key: ${{ secrets.SSH_PRIVATE_KEY }}
+              source: "app.tar.gz"
+              target: "/var/www/html"
+
          - name: Deploy to GitHub Pages
            uses: appleboy/ssh-action@v1.0.3
            with:
@@ -17,5 +30,6 @@ jobs:
               key: ${{ secrets.SSH_PRIVATE_KEY }}
               script: |
                  cd /var/www/html
-                 git pull origin main
+                 tar -xzf --overwrite app.tar.gz
+                 rm app.tar.gz
                  tsc
