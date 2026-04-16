@@ -23,14 +23,14 @@ jobs:
               source: "app.tar.gz"
               target: "/var/www/html"
 
-         - name: Deploy to GitHub Pages
-           uses: appleboy/ssh-action@v1.0.3
-           with:
-              host: ${{ secrets.SSH_HOST }}
-              username: ${{ secrets.SSH_USERNAME }}
-              key: ${{ secrets.SSH_PRIVATE_KEY }}
-              script: |
-                  cd /var/www/html
-                  tar -xzf app.tar.gz .
-                  rm app.tar.gz
-                  tsc
+         # - name: Deploy to GitHub Pages
+         #   uses: appleboy/ssh-action@v1.0.3
+         #   with:
+         #      host: ${{ secrets.SSH_HOST }}
+         #      username: ${{ secrets.SSH_USERNAME }}
+         #      key: ${{ secrets.SSH_PRIVATE_KEY }}
+         #      script: |
+         #          cd /var/www/html
+         #          tar -xzf app.tar.gz .
+         #          rm app.tar.gz
+         #          tsc
