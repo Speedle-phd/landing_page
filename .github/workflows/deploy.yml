@@ -11,10 +11,7 @@ jobs:
       steps:
          - name: Archive app
            run: |
-               rm -rf temp_dir
-               mkdir -p temp_dir
-               rsync -a --exclude='.github' ./ temp_dir/
-               tar -czf app.tar.gz -C temp_dir .
+               tar -czf app.tar.gz
 
          - name: Remove /var/www/html contents
            uses: appleboy/ssh-action@v1.0.3
