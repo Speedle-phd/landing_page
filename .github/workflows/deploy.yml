@@ -31,6 +31,6 @@ jobs:
               key: ${{ secrets.SSH_PRIVATE_KEY }}
               script: |
                   cd /var/www/html
-                  tar -xzf app.tar.gz
+                  tar -xzf app.tar.gz .
                   rm app.tar.gz
                   tsc
