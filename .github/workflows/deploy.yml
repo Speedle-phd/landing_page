@@ -11,7 +11,7 @@ jobs:
       steps:
          - name: Archive app
            run: |
-               tar -czf app.tar.gz . --exclude=.github
+               tar --exclude='.github' -czf app.tar.gz .
 
          - name: Copy to server
            uses: appleboy/scp-action@v0.1.7
