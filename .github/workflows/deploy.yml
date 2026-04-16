@@ -44,5 +44,5 @@ jobs:
               script: |
                   cd /var/www/html
                   tar -xzf app.tar.gz
-                  rm app.tar.gz
-                  tsc
+                  # rm app.tar.gz
+                  # tsc
