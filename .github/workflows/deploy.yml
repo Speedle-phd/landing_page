@@ -11,7 +11,9 @@ jobs:
       steps:
          - name: Archive app
            run: |
-               rsync -a --exclude='.github' . temp_dir
+               rm -rf temp_dir
+               mkdir -p temp_dir
+               rsync -a --exclude='.github' ./ temp_dir/
                tar -czf app.tar.gz -C temp_dir .
 
          - name: Remove /var/www/html contents
@@ -42,5 +44,5 @@ jobs:
               script: |
                   cd /var/www/html
                   tar -xzf app.tar.gz
-                  # rm app.tar.gz
-                  # tsc
+                  rm app.tar.gz
+                  tsc
