@@ -22,7 +22,7 @@ jobs:
               key: ${{ secrets.SSH_PRIVATE_KEY }}
               script: |
                   cd /var/www/html
-                  rm -rf ./*
+                  rm -rf /var/www/html/*
                   
          - name: Copy to server
            uses: appleboy/scp-action@v0.1.7
@@ -42,5 +42,5 @@ jobs:
               script: |
                   cd /var/www/html
                   tar -xzf app.tar.gz
-                  rm app.tar.gz
-                  tsc
+                  # rm app.tar.gz
+                  # tsc
