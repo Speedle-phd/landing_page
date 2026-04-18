@@ -13,7 +13,7 @@ jobs:
            uses: actions/checkout@v3
 
          - name: Deploy via rsync over SSH
-           uses: burnett01/rsync-deployments@v7.0.1
+           uses: burnett01/rsync-deployments@v8.0.5
            with:
                switches: -avzr --delete --exclude=".git" --exclude=".well-known"
                path: ./
