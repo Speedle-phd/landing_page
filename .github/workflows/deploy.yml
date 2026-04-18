@@ -22,5 +22,14 @@ jobs:
                remote_port: ${{ secrets.SSH_PORT }}
                remote_user: ${{ secrets.SSH_USERNAME }}
                remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
-         
+
+         - name: Build application with tsc
+           uses: appleboy/ssh-action@v1.0.3
+           with:
+               host: ${{ secrets.SSH_HOST }}
+               port: ${{ secrets.SSH_PORT }}
+               username: ${{ secrets.SSH_USERNAME }}
+               key: ${{ secrets.SSH_PRIVATE_KEY }}
+               script: |
+                  tsc
 
