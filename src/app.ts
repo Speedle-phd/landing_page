@@ -1,5 +1,5 @@
 
-console.log("I love Nadine")
+console.log("I love Nadine so much!")
 
 let cursorDot = document.querySelector(".cursor-dot") as HTMLElement | null;
 
