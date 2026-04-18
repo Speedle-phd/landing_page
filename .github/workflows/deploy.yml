@@ -13,12 +13,13 @@ jobs:
            uses: actions/checkout@v3
 
          - name: Deploy via rsync over SSH
-           uses: burnett01/rsync-deployments@v8.0.5
+           uses: burnett01/rsync-deployments@v8
            with:
                switches: -avzr --delete --exclude=".git" --exclude=".well-known"
                path: ./
                remote_path: /var/www/html/
                remote_host: ${{ secrets.SSH_HOST }}
+               remote_port: ${{ secrets.SSH_PORT }}
                remote_user: ${{ secrets.SSH_USERNAME }}
                remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
          
