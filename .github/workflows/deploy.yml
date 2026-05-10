@@ -34,5 +34,5 @@ jobs:
                passphrase: ${{ secrets.SSH_PASSPHRASE }}
                script: |
                   cd /var/www/html/
-                  npx tsc -p tsconfig.json
+                  tsc -p tsconfig.json
 
