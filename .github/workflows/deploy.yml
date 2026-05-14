@@ -22,6 +22,7 @@ jobs:
                remote_port: ${{ secrets.SSH_PORT }}
                remote_user: ${{ secrets.SSH_USERNAME }}
                remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+               remote_key_pass: ${{ secrets.SSH_PASSPHRASE }}
 
          - name: Build application with tsc
            uses: appleboy/ssh-action@v1.0.3
@@ -30,7 +31,8 @@ jobs:
                port: ${{ secrets.SSH_PORT }}
                username: ${{ secrets.SSH_USERNAME }}
                key: ${{ secrets.SSH_PRIVATE_KEY }}
+               passphrase: ${{ secrets.SSH_PASSPHRASE }}
                script: |
                   cd /var/www/html/
-                  npx tsc -p tsconfig.json
+                  tsc -p tsconfig.json
 

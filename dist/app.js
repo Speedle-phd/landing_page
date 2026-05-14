@@ -1,4 +1,4 @@
-console.log("I love Nadine");
+console.log("I love Nadine so much!!!!!!!");
 let cursorDot = document.querySelector(".cursor-dot");
 document.addEventListener("mouseover", (e) => {
     if (cursorDot)
