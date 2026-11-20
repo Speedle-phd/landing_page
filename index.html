@@ -4,14 +4,14 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Speedle.dev Landing Page</title>
-      <!-- css-sheet -->
+      <meta name="robots" content="noindex" />
+      <meta
+         name="description"
+         content="Explore the web projects and experiments by Speedle.dev."
+      />
+      <title>Speedle.dev — Web Projects</title>
       <link rel="stylesheet" href="./styles.css" />
-      <!-- js-script -->
       <script src="./dist/app.js" type="module"></script>
-      <!-- angular -->
-      <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script> -->
-      <!-- fontawesome -->
       <script
          src="https://kit.fontawesome.com/f63a4fc91d.js"
          crossorigin="anonymous"
@@ -19,55 +19,101 @@
       ></script>
    </head>
    <body>
-      <!-- <div class="cursor-dot"></div> -->
-      <header>
-         <h1>Welcome to Speedle.dev</h1>
-         <div class="underline"></div>
-      </header>
-      <main>
-         <p>
-            Welcome to the official landing page of Speedle.dev. Explore my
-            projects and services.
-         </p>
-         <ul>
-            <a target="_blank" href="https://currency.speedle.dev"
-               ><i class="fa-solid fa-magnifying-glass-dollar"></i>
-               <li>Currency Converter</li></a
-            >
-         </ul>
-         <ul>
-            <a
-               target="_blank"
-               href="https://cocktail.speedle.dev/"
-               ><i class="fa-solid fa-cocktail"></i>
-               <li>Cocktail Recipes</li></a
-            >
-         </ul>
-         <ul>
-            <a
-               target="_blank"
-               href="https://shopping.speedle.dev/"
-               ><i class="fa-solid fa-cart-shopping"></i>
-               <li>Shopping List</li></a
-            >
-         </ul>
-         <ul>
-            <a
-               target="_blank"
-               href="https://taskmanager.speedle.dev/"
-               ><i class="fa-solid fa-tasks"></i>
-               <li>Task Manager</li></a
-            >
-         </ul>
-         <ul>
-            <a
-               target="_blank"
-               href="https://taveuni.speedle.dev/"
-               ><i class="fa-solid fa-plane"></i>
-               <li>Travel Blog</li></a
-            >
-         </ul>
-         
-      </main>
+      <div class="page-shell">
+         <header class="hero">
+            <a class="brand" href="/" aria-label="Speedle.dev home">
+               <span class="brand-mark">S</span>
+               <span>Speedle.dev</span>
+            </a>
+
+            <div class="hero-content">
+               <p class="eyebrow"><span></span> Digital workshop</p>
+               <h1>Useful ideas,<br /><em>built for the web.</em></h1>
+               <p class="intro">
+                  A collection of small tools and experiences made with curiosity,
+                  clean code, and an eye for detail.
+               </p>
+            </div>
+         </header>
+
+         <main>
+            <div class="section-heading">
+               <p>Selected projects</p>
+               <span>01—05</span>
+            </div>
+
+            <section class="project-grid" aria-label="Projects">
+               <a class="project-card card-currency" target="_blank" rel="noopener noreferrer"
+                  href="https://currency.speedle.dev">
+                  <div class="card-top">
+                     <span class="project-number">01</span>
+                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-icon"><i class="fa-solid fa-magnifying-glass-dollar" aria-hidden="true"></i></div>
+                  <div>
+                     <p class="project-type">Web tool</p>
+                     <h2>Currency Converter</h2>
+                  </div>
+               </a>
+
+               <a class="project-card card-cocktail" target="_blank" rel="noopener noreferrer"
+                  href="https://cocktail.speedle.dev/">
+                  <div class="card-top">
+                     <span class="project-number">02</span>
+                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-icon"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i></div>
+                  <div>
+                     <p class="project-type">Recipe finder</p>
+                     <h2>Cocktail Recipes</h2>
+                  </div>
+               </a>
+
+               <a class="project-card card-hearth" target="_blank" rel="noopener noreferrer"
+                  href="https://hearth.speedle.dev/">
+                  <div class="card-top">
+                     <span class="project-number">03</span>
+                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-icon"><i class="fa-solid fa-fire" aria-hidden="true"></i></div>
+                  <div>
+                     <p class="project-type">Lifestyle</p>
+                     <h2>Hearth</h2>
+                  </div>
+               </a>
+
+               <a class="project-card card-task" target="_blank" rel="noopener noreferrer"
+                  href="https://taskmanager.speedle.dev/">
+                  <div class="card-top">
+                     <span class="project-number">04</span>
+                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></div>
+                  <div>
+                     <p class="project-type">Productivity</p>
+                     <h2>Task Manager</h2>
+                  </div>
+               </a>
+
+               <a class="project-card card-travel" target="_blank" rel="noopener noreferrer"
+                  href="https://taveuni.speedle.dev/">
+                  <div class="card-top">
+                     <span class="project-number">05</span>
+                     <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  </div>
+                  <div class="card-icon"><i class="fa-solid fa-plane" aria-hidden="true"></i></div>
+                  <div>
+                     <p class="project-type">Travel journal</p>
+                     <h2>Taveuni</h2>
+                  </div>
+               </a>
+            </section>
+         </main>
+
+         <footer>
+            <p>Independent web projects</p>
+            <p>Speedle.dev</p>
+         </footer>
+      </div>
    </body>
 </html>
